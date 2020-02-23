@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="/somewhere/to/upload" enctype="multipart/form-data">
+
+            <input name="progressbarTW_img" type="file" id="imgInp" accept="image/gif, image/jpeg, image/png"/ >
+         
+            <img id="preview_progressbarTW_img" src="#" />
+         
+         </form>
+    </div>
+</body>
+
+<script>
+
+    $("#progressbarTWInput").change(function(){
+    
+      readURL(this);
+    
+    });
+    
+     
+    
+    function readURL(input){
+    
+      if(input.files && input.files[0]){
+    
+        var reader = new FileReader();
+    
+        reader.onload = function (e) {
+    
+           $("#preview_progressbarTW_img").attr('src', e.target.result);
+    
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+    
+      }
+    
+    }
+    
+    </script>
+</html>
