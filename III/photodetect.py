@@ -33,8 +33,9 @@ result = {
     "Name" : detectorName,
     "photoPath" : imgPath
 }
-
-resultjson = json.dumps(result)
+with open("spot/{}.json".format(detectorName),"r") as f:
+    data = json.load(f)
+resultjson = json.dumps(data)
 print(str(resultjson))
 # print('{"a":123}')
 sys.stdout.flush()

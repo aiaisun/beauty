@@ -1,14 +1,14 @@
 <%- include('parts/html_head') %>
 
 <div>
-    <form  method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
         <input name="spotUpload" type="file" id="imgInp" accept="image/gif, image/jpeg, image/png">
-        
+
         <button id="postphoto" type="submit">upload</button>
-     </form>
+    </form>
 </div>
 <div>
-    <img id="preview_spotUpload" src="#" width="200px"> 
+    <img id="preview_spotUpload" src="#" width="200px">
 </div>
 
 <% if (locals.result) { %>
@@ -19,11 +19,15 @@
 <div>
     <form action='/photo/photodetect' method="get" enctype="multipart/form-data">
         <input name="uploadPicPath" type="hidden" id="uploadPicPath" value="<%= uploadPicPath %>">
-        <button id="postphoto" type="submit">Search</button>
-     </form>
+        <button id="detectPhoto" type="button">Search By Dlib</button>
+    </form>
 </div>
-
 <% } %>
-
+<div id="detectedSpot">
+    <div><img id="detectedSpotPhoto" src="#"></div>
+    <div id="detectedSpotName"></div>
+    <div id="detectedSpotDescription"></div>
+    <div><a id="detectedSpotLocation" href="#">Google Map</a></div>
+</div>
 <%- include('parts/script') %>
 <%- include('parts/html_foot') %>

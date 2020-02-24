@@ -4,6 +4,7 @@
 
 <script>
     $('#preview_spotUpload').hide()
+    $('#detectedSpot').hide()
     $("#imgInp").change(function () {
         //when file change> do something
         $('#preview_spotUpload').show()
@@ -26,5 +27,17 @@
     // $('#postphoto').onclick(function(){
     //     $('#targetphoto').hide()
     // })
+    $('#detectPhoto').click(function(){
+        $.get('/photo/photodetect', {'uploadPicPath': $('#uploadPicPath').val()}, function(data){
+            $('#detectedSpot').show()
+            $('#detectedSpotPhoto').attr('src', data['imgPath']);
+            $('#detectedSpotName').text(data['Name']);
+            $('#detectedSpotDescription').text(data['description']);
+            $('#detectedSpotLocation').attr('href', data['googleMap']);
+            // $('#detectedSpotLocation').text(data['Name']);
+            
+        })
+        alert("Detecting...")
+    })
 
 </script>

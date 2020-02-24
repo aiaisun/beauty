@@ -96,7 +96,7 @@ function photoDetect(req, res) {
         if (err) res.send(err)
         const parsedString = JSON.parse(result)
         // console.log(result);
-        // console.log(parsedString);
+        console.log(parsedString);
         // console.log(`name: ${parsedString.Name}, from: ${parsedString.From}`)
         res.json(parsedString)
 
