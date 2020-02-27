@@ -1,0 +1,31 @@
+<%- include('parts/html_head') %>
+
+<div>
+    <form method="POST" id="uploadForm" enctype="multipart/form-data">
+        <div>Name your album: &nbsp;
+        <input name="user" type="text">
+        </div>
+        <input name="photoUpload" type="file" id="inputPhotos" accept="image/gif, image/jpeg, image/png" multiple>
+        <input id="photoUploadBTN" type="submit" value='upload'>
+    </form>
+    <!-- <form method="POST" id="uploadForm2" enctype="multipart/form-data">
+        <input name="photoUpload" type="file" id="inputPhotos2" accept="image/gif, image/jpeg, image/png" multiple>
+        <button id="photoUploadBTN2" type="button">upload2</button>
+    </form> -->
+</div>
+<!-- album name -->
+<h1 id="albumName"></h1>
+<!-- upload photo list -->
+<div id="photoList" width='200px'></div>
+<!-- categorized photo -->
+<div id="categorizedPhoto"></div>
+
+<div>
+    <form method="get" enctype="multipart/form-data">
+        <input name="#" type="hidden" >
+        <button id="categorizePhoto" type="button">Categorize</button>
+    </form>
+</div>
+
+<%- include('parts/script') %>
+<%- include('parts/html_foot') %>
