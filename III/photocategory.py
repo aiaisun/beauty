@@ -82,14 +82,17 @@ detectorNum = len(photoDetectedList2)
 
 result = {
     "detectorNum" : detectorNum,
+    "place" :{}
 
 }
+result["place"] = []
 for detector in photoDetectedList2:
     imgPathList = []
     for imgPath in paths.list_images(r"public/user/{}/{}".format(userAlbum,detector)):
         imgPathList.append(imgPath)
-
-    result[detector] = imgPathList
+    
+    a = {"id": detector, "path": imgPathList}
+    result["place"].append(a)
 
 
 

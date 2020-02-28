@@ -27,6 +27,7 @@
     // $('#targetphoto').hide()
     // $('#postphoto').onclick(function(){
     //     $('#targetphoto').hide()
+    
     // })
     $('#detectPhoto').click(function () {
         $.get('/photo/photodetect', { 'uploadPicPath': $('#uploadPicPath').val() }, function (data) {
@@ -58,7 +59,7 @@
             dataType: 'json',
         }).done(function (data) {
             console.log(data);
-            userAlbum= data.userAlbum;// cannot const again or next step will disappear
+            userAlbum = data.userAlbum;// cannot const again or next step will disappear
 
             //find every photo path
             var photoNum = data.uploadFiles.length;
@@ -115,20 +116,33 @@
     $('#categorizePhoto').click(function () {
         $('#photoList').hide();
         console.log(userAlbum);
+        alert("Detecting...")
         // var userAlbum = $('#albumName').text()
         $.get('/photo/photocategory', {"userAlbum" : userAlbum, "photoPathList" : photoPathList}, function (data) {
-            $('categorizedPhoto').show()
+            $('#categorizedPhoto').show();
             // console.log(photoPathList)
-            categorizedNum = data.detectorNum
-            // for (var i = 0; i < categorizedNum; i++){
+            var categorizedNum = data.detectorNum;
+            var spots = data.place
+            
+            console.log(spots);
 
-                
+            for (var i in spots){
+                // var categorized = ""
+                // categorized += 
+                console.log(spots[i]["id"]);
+                console.log(spots[i]["path"]);
+                $('#categorizedPhoto').append(`<div id="${spots[i]['id']}"> ${spots[i]["id"]}</div>`);
+                $(`#${spots[i]["id"]}`).append(`<div id="${spots[i]["id"]}Path"></div>`)
+                for (var j in spots[i]["path"]){
 
-            // }
+                    $(`#${spots[i]["id"]}Path`).append(`<img src="${spots[i]["path"][j].substr(6)}" width="300px">`)
+
+                }
+            }
             // $('categorizedPhoto')
-            $('categorizedPhoto').text("123");
+            
         })
-        alert("Detecting...")
+        
     })
 
     
